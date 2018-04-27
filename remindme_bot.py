@@ -25,9 +25,10 @@ if ret:
 	
 	for pst in ret:
 		print(pst,jetzt)
-		po = Comment("@"+pst['username']+'/'+pst['permlink'],s)
-		body='You wanted to be reminded'
 		s.wallet.unlock(password)
+		po = Comment("@"+pst['username']+'/'+pst['permlink'],steem_instance=s)
+		body='You wanted to be reminded'
+		
 		returncode = po.reply(body=body,author=username)
 		print(returncode)
 		cursor.execute("UPDATE s_remindme SET finished =1 WHERE id =%s",[pst['id'],])
