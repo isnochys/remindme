@@ -9,7 +9,6 @@ def get_conn():
 	if not ret:
 		config.read('settings-sample.ini')
 
-	password = config['settings']['password']
 	mydb = config['settings']['adapter']
 	if mydb == 'mysql':
 		import MySQLdb as mdb
@@ -29,4 +28,22 @@ def get_conn():
 		thisdb = config[mydb]['name']
 		conn = sqlite3.connect(thisdb)
 		
-	return conn,password
+	return conn
+
+def get_pw():
+
+	ret = config.read('settings.ini')
+
+	if not ret:
+		config.read('settings-sample.ini')
+
+	password = config['settings']['password']
+	return password
+def get_user():
+		ret = config.read('settings.ini')
+
+	if not ret:
+		config.read('settings-sample.ini')
+
+	username = config['settings']['username']
+	return username
