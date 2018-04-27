@@ -22,7 +22,7 @@ cursor.execute("SELECT * FROM s_remindme WHERE finished =0 and tmstmp <%s",[jetz
 ret = getdict_query(cursor)
 if ret:
 	s = Steem()
-	steem.wallet.unlock(password)
+	s.wallet.unlock(password)
 	for pst in ret:
 		print(pst,jetzt)
 		po = Comment("@"+pst['username']+'/'+pst['permlink'],s)
