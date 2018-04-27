@@ -40,7 +40,7 @@ def get_pw():
 	password = config['settings']['password']
 	return password
 def get_user():
-		ret = config.read('settings.ini')
+	ret = config.read('settings.ini')
 
 	if not ret:
 		config.read('settings-sample.ini')
