@@ -33,11 +33,3 @@ if ret:
 		print(returncode)
 		cursor.execute("UPDATE s_remindme SET finished =1 WHERE id =%s",[pst['id'],])
 		conn.commit()
-		try:
-			cpermlink = returncode['operations'][0][1]['permlink']
-			cauthor = 'remindme.bot'
-			cdate = str(datetime.utcnow())
-			cursor.execute("INSERT INTO comments_to_upvote (author, permlink,post_date, finished) VALUES (%s,%s,%s,%s)",[cauthor, cpermlink,cdate,0])
-			conn.commit()
-		except Exception as e:
-			print(e)
