@@ -22,11 +22,12 @@ cursor.execute("SELECT * FROM s_remindme WHERE finished =0 and tmstmp <%s",[jetz
 ret = getdict_query(cursor)
 if ret:
 	s = Steem()
-	s.wallet.unlock(password)
+	
 	for pst in ret:
 		print(pst,jetzt)
 		po = Comment("@"+pst['username']+'/'+pst['permlink'],s)
 		body='You wanted to be reminded'
+		s.wallet.unlock(password)
 		returncode = po.reply(body=body,author=username)
 		print(returncode)
 		cursor.execute("UPDATE s_remindme SET finished =1 WHERE id =%s",[pst['id'],])
