@@ -54,7 +54,7 @@ for op in hrl:
 			matchl = pattern.findall(deltap)
 			datum = timestamp
 			for match in matchl:
-				if match[1]='-':
+				if match[1]=='-':
 					datum -= get_timedelta(match[2],match[3])
 				elif match[1]=='+':
 					datum += get_timedelta(match[2],match[3])
